@@ -27,8 +27,7 @@ class FlickControlManager extends ChangeNotifier {
   /// Is subtitle visible.
   bool get isSub => _isSub;
 
-  VideoPlayerController? get _videoPlayerController =>
-      _flickManager.flickVideoManager!.videoPlayerController;
+  CachedVideoPlayerController? get _videoPlayerController => _flickManager.flickVideoManager!.videoPlayerController;
   bool get _isPlaying => _flickManager.flickVideoManager!.isPlaying;
 
   /// Enter full-screen.
@@ -101,8 +100,7 @@ class FlickControlManager extends ChangeNotifier {
   /// Pause the video.
   Future<void> pause() async {
     await _videoPlayerController?.pause();
-    _flickManager.flickDisplayManager!
-        .handleShowPlayerControls(showWithTimeout: false);
+    _flickManager.flickDisplayManager!.handleShowPlayerControls(showWithTimeout: false);
     _notify();
   }
 
